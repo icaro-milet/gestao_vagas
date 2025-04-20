@@ -13,6 +13,6 @@ public class CandidateController {
 
     @PostMapping("/")
     public void create(@Valid @RequestBody CandidateEntity candidate){
-        System.out.println("TESTE");
+        
     }
 }

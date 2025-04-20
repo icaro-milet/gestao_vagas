@@ -13,6 +13,5 @@ public class CandidateController {
     @PostMapping("/")
     public void create( @RequestBody CandidateEntity candidate){
         System.out.println("Candidato");
-        System.out.println(candidate.getName());
     }
 }

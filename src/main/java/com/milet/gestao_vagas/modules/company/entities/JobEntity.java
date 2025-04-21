@@ -1,6 +1,7 @@
 package com.milet.gestao_vagas.modules.company.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -19,6 +20,7 @@ public class JobEntity {
 
     private String benefits;
 
+    @NotBlank(message = "O campo [level] é obrigatório")
     private String level;
 
     @ManyToOne()

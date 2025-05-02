@@ -1,7 +1,5 @@
 package com.milet.gestao_vagas.modules.company.controllers;
 
-
-import com.milet.gestao_vagas.exceptions.UserFoundException;
 import com.milet.gestao_vagas.modules.company.entities.CompanyEntity;
 import com.milet.gestao_vagas.modules.company.useCases.CreateCompanyUseCase;
 import jakarta.validation.Valid;
@@ -17,15 +15,17 @@ import org.springframework.web.bind.annotation.RestController;
 public class CompanyController {
 
     @Autowired
-    private CreateCompanyUseCase companyUseCase;
+    private CreateCompanyUseCase createCompanyUseCase;
 
-    @PostMapping("/")
-    public ResponseEntity<Object> create(@Valid @RequestBody CompanyEntity companyEntity){
-        try{
-            var result = this.companyUseCase.execute(companyEntity);
+    @PostMapping("/create")
+    public ResponseEntity<Object> create(@Valid @RequestBody CompanyEntity companyEntity) {
+
+        try {
+            var result = this.createCompanyUseCase.execute(companyEntity);
             return ResponseEntity.ok().body(result);
-        }catch (UserFoundException e){
+        } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+
 }

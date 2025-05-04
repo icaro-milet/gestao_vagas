@@ -16,21 +16,22 @@ public class SecurityConfig {
     @Autowired
     private SecurityFilterConfig securityFilterConfig;
 
+    @Autowired
+    private SecurityCandidateFilter securityCandidateFilter;
+
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers("/candidate/**").permitAll()
-                            .requestMatchers("/company").permitAll()
-                            .requestMatchers("/auth/company").permitAll()
+                            .requestMatchers("/company/**").permitAll()
                             .anyRequest().authenticated();
                 })
-                .addFilterBefore(securityFilterConfig, BasicAuthenticationFilter.class);
+                .addFilterBefore(securityFilterConfig, BasicAuthenticationFilter.class)
+                .addFilterBefore(securityCandidateFilter, BasicAuthenticationFilter.class);
 
         return http.build();
     }
-
-
 
     @Bean
     public PasswordEncoder passwordEncoder(){

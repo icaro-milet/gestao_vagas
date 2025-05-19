@@ -1,5 +1,6 @@
 package com.milet.gestao_vagas.modules.candidate.controllers;
 
+import com.milet.gestao_vagas.modules.candidate.dtos.ProfileCandidateResponseDTO;
 import com.milet.gestao_vagas.modules.candidate.entities.CandidateEntity;
 import com.milet.gestao_vagas.modules.candidate.useCases.CreateCandidateUseCase;
 import com.milet.gestao_vagas.modules.candidate.useCases.ListAllJobsByFilterUseCase;
@@ -48,6 +49,21 @@ public class CandidateController {
 
     @GetMapping("/profile")
     @PreAuthorize("hasRole('CANDIDATE')")
+    @Tag(
+            name = "Candidato",
+            description = "Informações do candidato"
+    )
+    @Operation(
+            summary = "Perfil do candidato",
+            description = "Essa função é responsável por buscar as informações do perfil do candidato"
+    )
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", content = {@Content(
+                    schema = @Schema(implementation = ProfileCandidateResponseDTO.class))
+            }),
+            @ApiResponse(responseCode = "400", description = "User not found")
+    })
+    @SecurityRequirement(name = "jwt_auth")
     public ResponseEntity<Object> getProfile(HttpServletRequest request){
 
         var candidateId = request.getAttribute("candidate_id");

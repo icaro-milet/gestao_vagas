@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
@@ -70,17 +71,11 @@ public class CandidateController {
             description = "Essa função é responsável por listar todas as vagas disponíveis baseada no filtro"
     )
     @ApiResponses({
-            @ApiResponse(
-                    responseCode = "200",
-                    content = {
-                            @Content(
-                                    array = @ArraySchema(
-                                            schema = @Schema(implementation = JobEntity.class)
-                                    )
-                            )
-                    }
-            )
+            @ApiResponse(responseCode = "200", content = {@Content(array = @ArraySchema(
+                    schema = @Schema(implementation = JobEntity.class)))
+            })
     })
+    @SecurityRequirement(name = "jwt_auth")
     public List<JobEntity> findJobByFilter(@RequestParam String filter){
         return this.listAllJobsByFilterUseCase.execute(filter);
     }

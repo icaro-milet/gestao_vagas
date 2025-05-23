@@ -4,7 +4,6 @@ import com.milet.gestao_vagas.exceptions.JobNotFoundException;
 import com.milet.gestao_vagas.exceptions.UserNotFoundException;
 import com.milet.gestao_vagas.modules.candidate.repositories.CandidateRepository;
 import com.milet.gestao_vagas.modules.company.repositories.JobRepository;
-import org.hibernate.validator.internal.constraintvalidators.bv.notempty.NotEmptyValidatorForArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

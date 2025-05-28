@@ -67,6 +67,7 @@ public class ApplyJobCandidateUseCaseTest {
     //TODO: Debug
     @Test
     public void should_be_able_to_create_a_new_apply_job(){
+        //region variables
         var candidateId = UUID.randomUUID();
         var jobId = UUID.randomUUID();
 
@@ -78,7 +79,7 @@ public class ApplyJobCandidateUseCaseTest {
         var applyJobCreated = ApplyJobEntity.builder()
                         .id(UUID.randomUUID())
                         .build();
-
+        //endregion
         when(candidateRepository.findById(candidateId)).thenReturn(Optional.of(new CandidateEntity()));
         when(jobRepository.findById(jobId)).thenReturn(Optional.of(new JobEntity()));
         when(applyJobRepository.save(applyJobToCreate)).thenReturn(applyJobCreated);

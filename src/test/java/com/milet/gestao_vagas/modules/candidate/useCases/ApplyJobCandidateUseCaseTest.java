@@ -10,7 +10,6 @@ import com.milet.gestao_vagas.modules.company.entities.JobEntity;
 import com.milet.gestao_vagas.modules.company.repositories.JobRepository;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.DisplayName;

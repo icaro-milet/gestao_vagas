@@ -173,4 +173,18 @@ Temporary Items
 # iCloud generated files
 *.icloud
 
+# JaCoCo coverage
+jacoco.exec
+target/site/jacoco/
+
+# SonarQube analysis
+.sonar/
+target/sonar/
+
+# Docker related
+.env.local
+.env.test
+.env.production
+docker-data/
+
 # End of https://www.toptal.com/developers/gitignore/api/intellij,java,macos

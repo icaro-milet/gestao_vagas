@@ -7,7 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
-import lombok.Data;
+import lombok.*;
 
 import jakarta.validation.constraints.Email;
 import org.hibernate.annotations.CreationTimestamp;
@@ -18,6 +18,11 @@ import java.util.UUID;
 
 @Data
 @Entity(name = "candidate")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class CandidateEntity {
 
     @Id

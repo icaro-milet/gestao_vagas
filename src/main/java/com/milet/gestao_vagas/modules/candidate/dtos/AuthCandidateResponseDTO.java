@@ -1,15 +1,14 @@
 package com.milet.gestao_vagas.modules.candidate.dtos;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class AuthCandidateResponseDTO {
 
     private String access_token;

@@ -3,10 +3,7 @@ package com.milet.gestao_vagas.modules.company.entities;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
@@ -14,6 +11,8 @@ import java.util.UUID;
 
 @Data
 @Entity(name = "job")
+@Getter
+@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor

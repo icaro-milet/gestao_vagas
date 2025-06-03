@@ -117,10 +117,21 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
+			<version>3.3.0</version> <!-- ou mais recente -->
 		</dependency>
 
+		<dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-registry-prometheus</artifactId>
+		</dependency>
 	</dependencies>
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>false</filtering>
+			</resource>
+		</resources>
 		<pluginManagement>
 			<plugins>
 				<!-- Plugin de compilação com suporte a annotation processor (como Lombok) -->

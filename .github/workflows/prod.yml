@@ -43,7 +43,7 @@ jobs:
       - name: Run Docker container
         run: >
           docker run -d -p 8080:8080
-          -e DATABADE_URL=${{ secrets.DATABASE_URL }}
+          -e DATABASE_URL=${{ secrets.DATABASE_URL }}
           -e DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}
           -e DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }}
           --name gestao-vagas

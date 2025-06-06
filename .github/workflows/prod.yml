@@ -24,7 +24,7 @@ jobs:
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker image
-        run: docker build -t milet.icaro@gmail.com/gestao_vagas .
+        run: docker build -t icaromilet/gestao_vagas .
 
       - name: Publish image
-        run: docker push milet.icaro@gmail.com/gestao_vagas
+        run: docker push icaromilet/gestao_vagas

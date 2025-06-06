@@ -2,7 +2,8 @@ name: Gestão de vagas Application
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
   build:
@@ -28,3 +29,22 @@ jobs:
 
       - name: Publish image
         run: docker push icaromilet/gestao_vagas
+
+  deploy:
+    needs: build
+    runs-on: self-hosted
+    steps:
+      - name: Pull image from Docker Hub
+        run: docker pull icaromilet/gestao_vagas:latest
+
+      - name: Remove existing container
+        run: docker rm -f gestao-vagas || true
+
+      - name: Run Docker container
+        run: >
+          docker run -d -p 8080:8080
+          -e DATABADE_URL=${{ secrets.DATABASE_URL }}
+          -e DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}
+          -e DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }}
+          --name gestao-vagas
+          icaromilet/gestao_vagas
